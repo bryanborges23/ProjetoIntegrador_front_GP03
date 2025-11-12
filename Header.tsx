@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, User, X } from "lucide-react";
+import { Menu, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useNavigate } from "react-router-dom";
@@ -19,6 +19,7 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+        
         <div className="flex items-center gap-4">
           <Sheet open={isOpen} onOpenChange={setIsOpen}>
             <SheetTrigger asChild>
@@ -26,8 +27,22 @@ const Header = () => {
                 <Menu className="h-6 w-6" />
               </Button>
             </SheetTrigger>
+
             <SheetContent side="left" className="w-[300px]">
               <div className="flex flex-col gap-4 mt-8">
+
+                {/* ✅ Botão Agendamentos adicionado corretamente */}
+                <Button
+                  variant="ghost"
+                  className="justify-start text-lg px-6 py-4 w-full"
+                  onClick={() => {
+                    setIsOpen(false);
+                    navigate("/agendamentos");
+                  }}
+                >
+                  Agendamentos
+                </Button>
+
                 <Button
                   variant="ghost"
                   className="justify-start text-lg"
@@ -35,6 +50,7 @@ const Header = () => {
                 >
                   Quem Somos
                 </Button>
+
                 <Button
                   variant="ghost"
                   className="justify-start text-lg"
@@ -42,6 +58,7 @@ const Header = () => {
                 >
                   Faça Parte do Nosso Time
                 </Button>
+
                 <Button
                   variant="ghost"
                   className="justify-start text-lg"
@@ -49,6 +66,7 @@ const Header = () => {
                 >
                   Avaliações
                 </Button>
+                
               </div>
             </SheetContent>
           </Sheet>
