@@ -9,6 +9,9 @@ import Dashboard from "./pages/Dashboard";
 import Terms from "./pages/Terms";
 import NotFound from "./pages/NotFound";
 
+// ✅ Import da nova página de Agendamentos
+import Agendamentos from "./pages/agendamento";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -18,11 +21,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/agendamentos" element={<Agendamentos />} />
           <Route path="/" element={<Index />} />
           <Route path="/login" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/termos" element={<Terms />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+          {/* ✅ Nova rota adicionada */}
+          <Route path="/agendamentos" element={<Agendamentos />} />
+
+          {/* Rota padrão (404) */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
